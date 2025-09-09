@@ -1,14 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import RootNavigator from './navigators/RootNavigator';
 
 const App = () => {
   return (
-    <View>
-      <Text style={{color:"red"}}>App</Text>
-    </View>
-  )
-}
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
+  );
+};
 
-export default App
+export default App;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
