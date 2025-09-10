@@ -12,7 +12,7 @@ function MyTabs() {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: true,
-        tabBarActiveTintColor: '#E96E6E',
+        tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: '#999',
         tabBarStyle: {
           backgroundColor: '#fff',
