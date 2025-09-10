@@ -6,7 +6,10 @@ const Stack = createStackNavigator();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="MyTabs"
+    >
       <Stack.Screen name="MyTabs" component={MyTabs} />
       <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
