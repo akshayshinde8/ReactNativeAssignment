@@ -6,13 +6,23 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#007AFF' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: '600' },
+      }}
+    >
       <Stack.Screen
         name="MainHome"
         component={Home}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen
+        name="Details"
+        component={Details}
+        options={{ title: 'Post Details' }}
+      />
     </Stack.Navigator>
   );
 }

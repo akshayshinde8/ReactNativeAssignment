@@ -10,13 +10,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const fetchPostsApi = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-  if (!response.ok) throw new Error('Failed to fetch posts');
-  return response.json();
-};
-
-const Home = () => {
+const Home = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -26,7 +20,11 @@ const Home = () => {
 
   const loadPosts = async () => {
     try {
-      const data = await fetchPostsApi();
+      const response = await fetch(
+        'https://jsonplaceholder.typicode.com/posts',
+      );
+      if (!response.ok) throw new Error('Failed to fetch posts');
+      const data = await response.json();
       setPosts(data);
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -46,15 +44,21 @@ const Home = () => {
   };
 
   const renderItem = ({ item }) => (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => navigation.navigate('Details', { post: item })}
+    >
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.body}>{item.body}</Text>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.pageTitle}>Posts</Text>
+      <View style={styles.header}>
+        <Ionicons name="document-text-outline" size={28} color="#007AFF" />
+        <Text style={styles.headerTitle}>Posts</Text>
+      </View>
 
       {loading ? (
         <ActivityIndicator
@@ -118,12 +122,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 20,
   },
-  pageTitle: {
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    justifyContent: 'center',
+  },
+  headerTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#222',
-    marginBottom: 20,
-    textAlign: 'center',
+    marginLeft: 10,
+    color: '#007AFF',
   },
   card: {
     backgroundColor: '#fff',
