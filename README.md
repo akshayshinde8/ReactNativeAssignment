@@ -1,7 +1,7 @@
 # 📱 TAPGO – React Native App
 
 A modern **React Native** application built to demonstrate core concepts like authentication, API integration, navigation, and state management.  
-This project is structured and styled with clean, interview-ready code.
+This project is structured and styled with clean and modular code.
 
 ---
 
